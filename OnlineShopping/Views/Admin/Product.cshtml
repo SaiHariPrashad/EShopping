@@ -1,0 +1,53 @@
+﻿@model IEnumerable<OnlineShopping.DAL.Tbl_Product>
+
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Product
+
+        <a href="../Admin/ProductAdd" class="btn btn-info pull-right">Add New</a>
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>Serial No.</th>
+                    <th>Product Name</th>
+                    <th>Action</th>
+
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Serial No.</th>
+                    <th>Product Name</th>
+                    <th>Action</th>
+                </tr>
+            </tfoot>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    int count = item.ProductId;
+                    <tr>
+                        <td>
+                            @count
+                        </td>
+                        <td>
+                            @item.ProductName
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "ProductEdit", new { productId = item.ProductId}) 
+                        </td>
+                    </tr>
+                    //count=count+1;
+                    //HTML.Native.Html.Printing.PrintManager.Print(count);
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
